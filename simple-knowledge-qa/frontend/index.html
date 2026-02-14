@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Q&A - AI-Powered Document Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>🧠 Knowledge Q&A</h1>
+                <p>Upload documents and ask questions powered by AI</p>
+            </div>
+            <div class="status-badge" id="statusBadge">
+                <span class="status-dot"></span>
+                <span>Checking status...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Upload Section -->
+            <section class="card upload-section">
+                <h2>📤 Upload Documents</h2>
+                <p class="subtitle">Upload .txt files to build your knowledge base</p>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📄</div>
+                    <p class="upload-text">Drag & drop your .txt file here</p>
+                    <p class="upload-subtext">or</p>
+                    <label for="fileInput" class="btn btn-primary">Choose File</label>
+                    <input type="file" id="fileInput" accept=".txt" hidden>
+                </div>
+                
+                <div id="uploadStatus" class="upload-status hidden"></div>
+            </section>
+
+            <!-- Documents List -->
+            <section class="card documents-section">
+                <div class="section-header">
+                    <h2>📚 Your Documents</h2>
+                    <span class="document-count" id="documentCount">0 documents</span>
+                </div>
+                
+                <div id="documentsList" class="documents-list">
+                    <p class="empty-state">No documents uploaded yet. Upload one to get started!</p>
+                </div>
+            </section>
+
+            <!-- Q&A Section -->
+            <section class="card qa-section">
+                <h2>💬 Ask a Question</h2>
+                <p class="subtitle">Get AI-powered answers from your documents</p>
+                
+                <form id="questionForm" class="question-form">
+                    <div class="input-group">
+                        <textarea 
+                            id="questionInput" 
+                            placeholder="What would you like to know about your documents?"
+                            rows="3"
+                            required
+                        ></textarea>
+                        <button type="submit" class="btn btn-primary" id="askButton">
+                            <span id="askButtonText">Ask Question</span>
+                            <span id="askButtonLoader" class="loader hidden"></span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Answer Display -->
+                <div id="answerSection" class="answer-section hidden">
+                    <div class="answer-header">
+                        <h3>💡 Answer</h3>
+                        <span class="answer-mode" id="answerMode"></span>
+                    </div>
+                    <div class="answer-content" id="answerContent"></div>
+                    
+                    <div class="answer-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">📎 Source:</span>
+                            <span class="meta-value" id="answerSource"></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">🎯 Similarity:</span>
+                            <span class="meta-value" id="answerSimilarity"></span>
+                        </div>
+                    </div>
+                    
+                    <div id="additionalSources" class="additional-sources hidden">
+                        <p class="sources-label">Also used from:</p>
+                        <div id="sourcesList"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Status -->
+            <section class="card status-section collapsed" id="statusSection">
+                <div class="section-header clickable" onclick="toggleStatus()">
+                    <h2>🔧 System Status</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                
+                <div class="status-content" id="statusContent">
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <div class="status-icon" id="backendIcon">⏳</div>
+                            <div class="status-info">
+                                <h4>Backend API</h4>
+                                <p id="backendStatus">Checking...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="status-item">
+                            <div class="status-icon" id="llmIcon">⏳</div>
+                            <div class="status-info">
+                                <h4>AI Model (Gemini)</h4>
+                                <p id="llmStatus">Checking...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="status-item">
+                            <div class="status-icon" id="vectorIcon">⏳</div>
+                            <div class="status-info">
+                                <h4>Vector Store</h4>
+                                <p id="vectorStatus">Checking...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="checkStatus()">
+                        🔄 Refresh Status
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Powered by FAISS, Sentence Transformers & Google Gemini</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
