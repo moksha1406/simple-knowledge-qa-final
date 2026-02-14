@@ -66,6 +66,9 @@ Server will start at: `http://localhost:8000`
 
 ### 1. Upload Document
 
+<img width="1541" height="763" alt="image" src="https://github.com/user-attachments/assets/969d6c7a-0f53-4d19-8eff-6e95c751922c" />
+
+
 ```bash
 POST /upload
 
@@ -74,6 +77,8 @@ curl -X POST http://localhost:8000/upload \
 ```
 
 **Response:**
+<img width="1491" height="333" alt="image" src="https://github.com/user-attachments/assets/3dfb3775-7bc9-4d9b-ba00-614d520f714b" />
+
 ```json
 {
   "message": "Document uploaded successfully",
@@ -84,6 +89,9 @@ curl -X POST http://localhost:8000/upload \
 
 ### 2. Ask Question
 
+<img width="1561" height="382" alt="image" src="https://github.com/user-attachments/assets/e505b71b-1a56-4c67-9039-f9b75193a389" />
+
+
 ```bash
 POST /ask
 
@@ -93,6 +101,9 @@ curl -X POST http://localhost:8000/ask \
 ```
 
 **Response:**
+
+<img width="1541" height="637" alt="image" src="https://github.com/user-attachments/assets/844cde05-7d19-4830-b14d-93888e5612b5" />
+
 ```json
 {
   "answer": "Machine learning is a subset of AI that...",
