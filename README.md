@@ -46,6 +46,16 @@ FAISS retrieves the most similar chunk.
 The retrieved context is sent to Gemini.
 The API returns the generated answer along with the source file and similarity score.
 
+## frontend
+
+<img width="1173" height="801" alt="Screenshot 2026-02-14 162430" src="https://github.com/user-attachments/assets/9ea9fa80-828f-45f8-bae7-092d1d8721a0" />
+
+
+![Uploading Screenshot 2026-02-14 162548.png…]()
+
+
+
+
 ## Setup
 -1. Install Dependencies
 pip install -r requirements.txt
